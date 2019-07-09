@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EventBriteCatalog.Domain
 {
@@ -12,7 +10,17 @@ namespace EventBriteCatalog.Domain
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string PictureUrl { get; set; }
-        public DateTime EventTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Start Time")]
+        public DateTime EventStartTime { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "End Time")]
+        public DateTime EventEndTime { get; set; }
+
         public int CatalogCategoryId { get; set; }
         public virtual CatalogCategory Category { get; set; }
         public int CatalogLocationId { get; set; }
