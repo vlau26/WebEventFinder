@@ -1,3 +1,0 @@
-C:\Users\lauv2\source\repos\EventBriteCatalog\EventBriteCatalog\obj\Debug\netcoreapp2.1\EventBriteCatalog.csproj.CoreCompileInputs.cache
-C:\Users\lauv2\source\repos\EventBriteCatalog\EventBriteCatalog\obj\Debug\netcoreapp2.1\EventBriteCatalog.AssemblyInfoInputs.cache
-C:\Users\lauv2\source\repos\EventBriteCatalog\EventBriteCatalog\obj\Debug\netcoreapp2.1\EventBriteCatalog.AssemblyInfo.cs
