@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using EventBriteAssignment3A.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EventBriteCatalog
 {
