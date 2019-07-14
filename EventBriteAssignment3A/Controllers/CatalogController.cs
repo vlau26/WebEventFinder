@@ -46,7 +46,7 @@ namespace EventBriteAssignment3A.Controllers
             var eventsCount = await _catalogContext.CatalogItems.LongCountAsync();
 
             var events = await _catalogContext.CatalogItems
-                 .OrderBy(c => c.EventName)
+                 .OrderBy(c => c.EventStartTime)
                  .Skip(pageSize * pageIndex)
                  .Take(pageSize)
                  .ToListAsync();
