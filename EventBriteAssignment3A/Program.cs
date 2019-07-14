@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using ProductCatalogAPI.Data;
+using EventBriteAssginment3A.Data
 
 namespace EventBriteCatalog
 {
@@ -16,10 +16,10 @@ namespace EventBriteCatalog
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).Build();
-            using (var scope = host.SErvices.CreateScope())
+            using (var scope = host.Services.CreateScope())
                 {
                     var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<EventBriteCatalogContext>();
+                var context = services.GetRequiredService<CatalogContext>();
                 CatalogSeed.Seed(context);
                 }
             host.Run();
