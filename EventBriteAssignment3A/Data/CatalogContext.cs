@@ -36,9 +36,9 @@ namespace EventBriteAssignment3A.Data
                 .IsRequired()
                 .ForSqlServerUseSequenceHiLo("catalog_hilo");
 
-            builder.Property(c => c.EventName).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.EventName).IsRequired().HasMaxLength(200);
 
-            builder.Property(c => c.Description).IsRequired().HasMaxLength(300);
+            builder.Property(c => c.Description).IsRequired().HasMaxLength(1000);
 
             builder.Property(c => c.Price).IsRequired();
 

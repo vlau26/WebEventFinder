@@ -5,6 +5,7 @@ namespace EventBriteCatalog.Domain
 {
     public class CatalogItem
     {
+        [Key]
         public int EventId { get; set; } 
         public string EventName { get; set; } 
         public string Description { get; set; } 
