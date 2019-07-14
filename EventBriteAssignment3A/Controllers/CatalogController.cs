@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EventBriteAssignment3A.Data;
 using EventBriteAssignment3A.ViewModels;
 using EventBriteCatalog.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -66,43 +67,6 @@ namespace EventBriteAssignment3A.Controllers
             return events;
         }
 
-/*        [HttpGet]
-        [Route("[action]/EventName/{EventName:minlength(1)}")]
-        public async Task<IActionResult> Events(
-             string? EventName, int? EventId,
-             [FromQuery]int pageSize = 6,
-             [FromQuery]int pageIndex = 0)
-        {
-            var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
-
-            if (EventId.HasValue)
-            {
-                root = root.Where(c => c.EventId == EventId);
-            }
-
-            if (EventName.HasValue)
-            {
-                root = root.Where(c => c.EventName == EventName);
-            }
-
-            var totalEvents = await root.LongCountAsync();
-
-            var eventsOnPage = await root
-                               .OrderBy(c => c.EventName)
-                               .Skip(pageSize * pageIndex)
-                               .Take(pageSize)
-                               .ToListAsync();
-            eventsOnPage = ChangePictureUrl(eventsOnPage);
-            var model = new PaginatedItemsViewModel<CatalogItem>
-            {
-                PageSize = pageSize,
-                PageIndex = pageIndex,
-                Count = eventsCount,
-                Data = events
-            };
-            return Ok(model);
-        }
-
 
         [HttpGet]
         [Route("events/{id:int}")]
@@ -114,16 +78,52 @@ namespace EventBriteAssignment3A.Controllers
                 return BadRequest("Incorrect Id!");
             }
 
-            var event = await _catalogContext.CatalogItem.SingleOrDefaultAsync(c => c.Id == id);
-            if (event == null)
+            var catalogItem = await _catalogContext.CatalogItems.SingleOrDefaultAsync(c => c.EventId == id);
+            if (catalogItem == null)
             {
-            return NotFound("not found");
+                return NotFound("Event not found");
+            }
+            catalogItem.PictureUrl = catalogItem.PictureUrl.Replace("http://externalcatalogbaseurltobereplaced", _configuration["ExternalCatalogBaseurl"]);
+            return Ok(catalogItem);
         }
 
-            event.PictureUrl = event.PictureUrl
-                    .Replace("http://externalcatalogbaseurltobereplaced",
-                    _configuration["ExternalCatalogBaseurl"]);
-            return Ok(event);
-        }*/
+        /*        [HttpGet]
+                [Route("[action]/EventName/{EventName:minlength(1)}")]
+                public async Task<IActionResult> Events(
+                     string? EventName, int? EventId,
+                     [FromQuery]int pageSize = 6,
+                     [FromQuery]int pageIndex = 0)
+                {
+                    var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
+
+                    if (EventId.HasValue)
+                    {
+                        root = root.Where(c => c.EventId == EventId);
+                    }
+
+                    if (EventName.HasValue)
+                    {
+                        root = root.Where(c => c.EventName == EventName);
+                    }
+
+                    var totalEvents = await root.LongCountAsync();
+
+                    var eventsOnPage = await root
+                                       .OrderBy(c => c.EventName)
+                                       .Skip(pageSize * pageIndex)
+                                       .Take(pageSize)
+                                       .ToListAsync();
+                    eventsOnPage = ChangePictureUrl(eventsOnPage);
+                    var model = new PaginatedItemsViewModel<CatalogItem>
+                    {
+                        PageSize = pageSize,
+                        PageIndex = pageIndex,
+                        Count = eventsCount,
+                        Data = events
+                    };
+                    return Ok(model);
+                }
+
+        */
     }
 }
