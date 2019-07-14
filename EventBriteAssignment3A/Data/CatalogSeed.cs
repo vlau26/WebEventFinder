@@ -84,7 +84,7 @@ namespace EventBriteAssignment3A.Data
             return new List<CatalogItem>()
             {
                 // [event 1 - concert (music)]_ Capitol Hill Block Party 2019
-                new CatalogItem() {CatalogCategoryId=1 CatalogLocationId=1,
+                new CatalogItem() {CatalogCategoryId=1, CatalogLocationId=1,
                 EventName = "Capitol Hill Block Party 2019", Price = 200, Description = "a large-scale music festival that originally started as " +
                 "a charming neighborhood get-together " +
                 "and has since morphed into a massive spectacle of Top-40 headliners and Seattle heavy hitters" +
