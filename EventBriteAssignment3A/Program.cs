@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using EventBriteAssginment3A.Data;
+using EventBriteAssignment3A.Data;
 
 namespace EventBriteCatalog
 {
