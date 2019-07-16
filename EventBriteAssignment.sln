@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBriteAssignment", "EventBriteAssignment\EventBriteAssignment.csproj", "{E077E22F-972A-4A9D-A4BA-9332FC60919D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{B7BD0E92-AB12-4620-9F6A-039435FD8661}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{B1F1CBC0-A70F-4B03-90AA-484895107FDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMvc", "WebMvc\WebMvc.csproj", "{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{E077E22F-972A-4A9D-A4BA-9332FC60919D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E077E22F-972A-4A9D-A4BA-9332FC60919D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E077E22F-972A-4A9D-A4BA-9332FC60919D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E077E22F-972A-4A9D-A4BA-9332FC60919D} = {B7BD0E92-AB12-4620-9F6A-039435FD8661}
+		{6FEF31DE-4A94-4CB7-B024-2E0D4EBA887F} = {B1F1CBC0-A70F-4B03-90AA-484895107FDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0A28A2F-A9B6-4299-A443-55726E4EC4A2}
