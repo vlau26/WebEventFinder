@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WebMvc.Models;
+
+
 
 namespace WebMvc.ViewModels
 {
@@ -14,7 +15,7 @@ namespace WebMvc.ViewModels
 
         public IEnumerable<SelectListItem> Category { get; set; }
         public IEnumerable<SelectListItem> Location { get; set; }
-        public IEnumerable<SelectListItem> Page { get; set; }
+
 
         public IEnumerable<CatalogItem> ItemOnPage { get; set; }
         //                 CategoryFilterApplied = category LocationFilterApplied = location ?? 0

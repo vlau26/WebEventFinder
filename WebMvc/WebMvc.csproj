@@ -16,4 +16,8 @@
     <ProjectReference Include="..\EventBriteAssignment\EventCatalog.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Catalog\" />
+  </ItemGroup>
+
 </Project>
