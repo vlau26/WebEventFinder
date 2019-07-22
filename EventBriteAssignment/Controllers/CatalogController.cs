@@ -39,6 +39,7 @@ namespace EventBriteAssignment3A.Controllers
             return Ok(events);
         }
 
+        // GET api/catalog/events?pagesize=5&pageIndex=2
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> Events([FromQuery]int pageSize = 6, [FromQuery]int pageIndex = 0)
@@ -87,43 +88,119 @@ namespace EventBriteAssignment3A.Controllers
             return Ok(catalogItem);
         }
 
-        /*        [HttpGet]
-                [Route("[action]/EventName/{EventName:minlength(1)}")]
-                public async Task<IActionResult> Events(
-                     string? EventName, int? EventId,
-                     [FromQuery]int pageSize = 6,
-                     [FromQuery]int pageIndex = 0)
-                {
-                    var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
+        // GET api/Catalog/Events/category/1/location/null[?pageSize=6&pageIndex=0]
+        [HttpGet]
+        [Route("[action]/category/{catalogCategoryId}/location/{catalogLocationId}")]
+        public async Task<IActionResult> Events(int? catalogCategoryId, int? catalogLocationId,
+            [FromQuery]int pageSize = 6,
+            [FromQuery]int pageIndex = 0)
+        {
+            var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
 
-                    if (EventId.HasValue)
-                    {
-                        root = root.Where(c => c.EventId == EventId);
-                    }
+            if (catalogCategoryId.HasValue)
+            {
+                root = root.Where(c => c.CatalogCategoryId == catalogCategoryId);
+            }
 
-                    if (EventName.HasValue)
-                    {
-                        root = root.Where(c => c.EventName == EventName);
-                    }
+            if (catalogLocationId.HasValue)
+            {
+                root = root.Where(c => c.CatalogLocationId == catalogLocationId);
+            }
 
-                    var totalEvents = await root.LongCountAsync();
-
-                    var eventsOnPage = await root
-                                       .OrderBy(c => c.EventName)
+            var totalEvents = await root.LongCountAsync();
+            var eventsOnPage = await root.OrderBy(c => c.EventStartTime)
                                        .Skip(pageSize * pageIndex)
                                        .Take(pageSize)
                                        .ToListAsync();
-                    eventsOnPage = ChangePictureUrl(eventsOnPage);
-                    var model = new PaginatedItemsViewModel<CatalogItem>
-                    {
-                        PageSize = pageSize,
-                        PageIndex = pageIndex,
-                        Count = eventsCount,
-                        Data = events
-                    };
-                    return Ok(model);
-                }
+            eventsOnPage = ChangePictureUrl(eventsOnPage);
+            var model = new PaginatedItemsViewModel<CatalogItem>
+            {
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                Count = totalEvents,
+                Data = eventsOnPage
+            };
+            return Ok(model);
+        }
 
-        */
+        // GET api/Catalog/events/withname/GroupHikeInChicago?pageSize=2&pageIndex=0
+        [HttpGet]
+        [Route("[action]/withname/{EventName:minlength(1)}")]
+        public async Task<IActionResult> Events(string eventName,
+            [FromQuery]int pageSize = 6,
+            [FromQuery]int pageIndex = 0)
+        {
+            var totalEvents = await _catalogContext.CatalogItems
+                                    .Where(c => c.EventName.StartsWith(eventName))
+                                    .LongCountAsync();
+            var eventsOnPage = await _catalogContext.CatalogItems
+                                    .Where(c => c.EventName.StartsWith(eventName))
+                                    .OrderBy(c => c.EventStartTime)
+                                    .Skip(pageSize * pageIndex)
+                                    .Take(pageSize)
+                                    .ToListAsync();
+            eventsOnPage = ChangePictureUrl(eventsOnPage);
+            var model = new PaginatedItemsViewModel<CatalogItem>
+            {
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                Count = totalEvents,
+                Data = eventsOnPage
+            };
+
+            return Ok(model);
+        }
+
+        [HttpPost]
+        [Route("events")]
+        public async Task<IActionResult> CreateEvent([FromBody] CatalogItem _event)
+        {
+            var eventCreate = new CatalogItem
+            {
+                EventName = _event.EventName,
+                Price = _event.Price,
+                EventStartTime = _event.EventStartTime,
+                EventEndTime = _event.EventEndTime,
+                Description = _event.Description,
+                PictureUrl = _event.PictureUrl,
+                CatalogCategoryId = _event.CatalogCategoryId,
+                CatalogLocationId = _event.CatalogLocationId
+            };
+            _catalogContext.CatalogItems.Add(eventCreate);
+            await _catalogContext.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetEventsById), new { id = eventCreate.EventId });
+        }
+
+        [HttpPut]
+        [Route("events")]
+        public async Task<IActionResult> UpdateEvent([FromBody] CatalogItem eventToUpdate)
+        {
+            var catalogItem = await _catalogContext.CatalogItems.SingleOrDefaultAsync(i => i.EventId == eventToUpdate.EventId);
+            if (catalogItem == null)
+            {
+                return NotFound(new { Message = $"Event with Id {eventToUpdate.EventId} not found." });
+            }
+            catalogItem = eventToUpdate;
+            _catalogContext.CatalogItems.Update(catalogItem);
+            await _catalogContext.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetEventsById), new { id = eventToUpdate.EventId });
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> DeleteEvent(int eventId)
+        {
+            var eventToDelete = await _catalogContext.CatalogItems.SingleOrDefaultAsync(e => e.EventId == eventId);
+
+            if (eventToDelete == null)
+            {
+                return NotFound();
+            }
+            _catalogContext.CatalogItems.Remove(eventToDelete);
+            await _catalogContext.SaveChangesAsync();
+            return NoContent();
+        }
+
+
     }
 }
