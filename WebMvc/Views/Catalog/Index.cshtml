@@ -64,20 +64,20 @@
     </div>
 </section>
 <div class="container">
-    @if (Model.CatalogItems.Count() > 0)
+    @if (Model.ItemOnPage.Count() > 0)
     {
-        @Html.Partial("_pagination", Model.PaginationInfo)
+        @Html.PartialAsync("_pagination", Model.PaginationInfo)
 
         <div class="esh-catalog-items row">
-            @foreach (var catalogItem in Model.CatalogItems)
+            @foreach (var catalogItem in Model.ItemOnPage)
             {
                 <div class="esh-catalog-item col-md-4">
-                    @Html.Partial("_product", catalogItem)
+                    @Html.PartialAsync("_product", catalogItem)
                 </div>
             }
         </div>
 
-        @Html.Partial("_pagination", Model.PaginationInfo)
+        @Html.PartialAsync("_pagination", Model.PaginationInfo)
     }
     else
     {
