@@ -7,7 +7,7 @@ using WebMvc.Models;
 
 namespace WebMvc.Services
 {
-    interface ICatalogService
+    public interface ICatalogService
     {
         Task<Catalog> GetCatalogItemsAsync(int page, int size,
             int? category, int? location);
