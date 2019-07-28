@@ -16,4 +16,4 @@ RUN dotnet publish "EventCatalog.csproj" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "EventBriteAssignment.dll"]
+ENTRYPOINT ["dotnet", "EventCatalog.dll"]
