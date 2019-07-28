@@ -8,7 +8,7 @@ COPY ["EventBriteAssignment/EventCatalog.csproj", "EventBriteAssignment/"]
 RUN dotnet restore "EventBriteAssignment/EventBriteAssignment.csproj"
 COPY . .
 WORKDIR "/src/EventBriteAssignment"
-RUN dotnet build "EventBriteAssignment.csproj" -c Release -o /app
+RUN dotnet build "EventCatalog.csproj" -c Release -o /app
 
 FROM build AS publish
 RUN dotnet publish "EventBriteAssignment.csproj" -c Release -o /app
