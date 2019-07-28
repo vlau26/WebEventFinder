@@ -25,7 +25,22 @@ services:
     depends_on:
       - mssqlserver
 
-  
+  tokenservice:
+    image: eventbrite/tokenserviceapi
+    build:
+      context: .\TokenServiceApi
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      MvcClient: http://localhost:5090
+    ports:
+      - "5092:80"
+    container_name: tokenapi
+    networks:
+      - backend
+      - frontend
+    depends_on:
+      - mssqlserver
 
   webmvc:
     build:
@@ -34,15 +49,18 @@ services:
     image: eventbrite/webmvc
     environment: 
       CatalogUrl: http://catalog
-      CallbackUrl: http://localhost:5088
+      IdentityUrl: http://192.168.3.159:5092
+      CallbackUrl: http://localhost:5090
       ASPNETCORE_ENVIRONMENT: Development
     ports:
-      - "5088:80"
+      - "5090:80"
     container_name: webeventstore
     networks: 
       - frontend
     depends_on:
       - mssqlserver
+      - tokenservice
+      - catalog
 
 
   mssqlserver:
