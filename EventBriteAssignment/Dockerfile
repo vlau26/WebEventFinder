@@ -11,7 +11,7 @@ WORKDIR "/src/EventBriteAssignment"
 RUN dotnet build "EventCatalog.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "EventBriteAssignment.csproj" -c Release -o /app
+RUN dotnet publish "EventCatalog.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
