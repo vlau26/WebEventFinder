@@ -5,14 +5,14 @@ networks:
   backend:
 
 services:
-  catalog:
+  catalog: 
     build:
       context: .\EventBriteAssignment
       dockerfile: Dockerfile
     image: events/catalogapi
     environment: 
       DatabaseServer: mssqlserver
-      DatabaseName: CatalogDb
+      DatabaseName: eventCatalogDb
       DatabaseUser: sa
       DatabaseUserPassword: EventsApi(!)
       ExternalCatalogBaseUrl: http://localhost:5088
