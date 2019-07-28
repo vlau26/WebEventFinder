@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
 COPY ["EventBriteAssignment/EventCatalog.csproj", "EventBriteAssignment/"]
-RUN dotnet restore "EventBriteAssignment/EventBriteAssignment.csproj"
+RUN dotnet restore "EventBriteAssignment/EventCatalog.csproj"
 COPY . .
 WORKDIR "/src/EventBriteAssignment"
 RUN dotnet build "EventCatalog.csproj" -c Release -o /app
