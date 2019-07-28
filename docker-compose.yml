@@ -25,6 +25,25 @@ services:
     depends_on:
       - mssqlserver
 
+  
+
+  webmvc:
+    build:
+      context: .\WebMvc
+      dockerfile: Dockerfile
+    image: eventbrite/webmvc
+    environment: 
+      CatalogUrl: http://catalog
+      CallbackUrl: http://localhost:5088
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - "5088:80"
+    container_name: webeventstore
+    networks: 
+      - frontend
+    depends_on:
+      - mssqlserver
+
 
   mssqlserver:
     image: "microsoft/mssql-server-linux:latest"
@@ -36,5 +55,3 @@ services:
       - "1451:1433"
     networks:
       - backend
-
-
