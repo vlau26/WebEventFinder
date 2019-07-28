@@ -9,7 +9,7 @@ services:
     build:
       context: .\EventBriteAssignment
       dockerfile: Dockerfile
-    image: events/catalogapi
+    image: eventbrite/catalogapi
     environment: 
       DatabaseServer: mssqlserver
       DatabaseName: eventCatalogDb

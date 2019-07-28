@@ -25,7 +25,7 @@ namespace EventBriteCatalog
             var database = Configuration["DatabaseName"];
             var user = Configuration["DatabaseUser"];
             var password = Configuration["DatabaseUserPassword"];
-            var connectionString = $"Server={server};Database={database};User ID={user};Pasword={password}";
+            var connectionString = $"Server={server};Database={database};User ID={user};Password={password}";
             services.AddDbContext<CatalogContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
