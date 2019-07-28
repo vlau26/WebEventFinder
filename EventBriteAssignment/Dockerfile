@@ -4,16 +4,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
-COPY ["EventBriteCatalog/EventBriteCatalog.csproj", "EventBriteCatalog/"]
-RUN dotnet restore "EventBriteCatalog/EventBriteCatalog.csproj"
+COPY ["EventBriteAssignment/EventCatalog.csproj", "EventBriteAssignment/"]
+RUN dotnet restore "EventBriteAssignment/EventCatalog.csproj"
 COPY . .
-WORKDIR "/src/EventBriteCatalog"
-RUN dotnet build "EventBriteCatalog.csproj" -c Release -o /app
+WORKDIR "/src/EventBriteAssignment"
+RUN dotnet build "EventCatalog.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "EventBriteCatalog.csproj" -c Release -o /app
+RUN dotnet publish "EventCatalog.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "EventBriteCatalog.dll"]
+ENTRYPOINT ["dotnet", "EventCatalog.dll"]

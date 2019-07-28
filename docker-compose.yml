@@ -1,0 +1,40 @@
+version: '3.4'
+
+networks:
+  frontend:
+  backend:
+
+services:
+  catalog: 
+    build:
+      context: .\EventBriteAssignment
+      dockerfile: Dockerfile
+    image: eventbrite/catalogapi
+    environment: 
+      DatabaseServer: mssqlserver
+      DatabaseName: eventCatalogDb
+      DatabaseUser: sa
+      DatabaseUserPassword: EventsApi(!)
+      ExternalCatalogBaseUrl: http://localhost:5088
+    ports:
+      - "5088:80"
+    container_name: catalogapi
+    networks: 
+      - backend
+      - frontend
+    depends_on:
+      - mssqlserver
+
+
+  mssqlserver:
+    image: "microsoft/mssql-server-linux:latest"
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: EventsApi(!)
+    container_name: catalogdb
+    ports: 
+      - "1451:1433"
+    networks:
+      - backend
+
+
