@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebMvc.Services;
+using WebMvc.ViewModels;
 
 namespace WebMvc.Controllers
 {
     public class CatalogController : Controller
     {
         private readonly ICatalogService _service;
-        public class CatalogController(ICatalogService service) => _service = service;
+        public CatalogController(ICatalogService service) => _service = service;
                    
         public async Task<IActionResult> Index(int? category, int? location, int? page, int? itemsOnPage)
         {
@@ -22,11 +21,11 @@ namespace WebMvc.Controllers
                 PaginationInfo = new PaginationInfo
                 {
                     ActualPage = page ?? 0,
-                    itemsPerPage = itemsOnPage ?? 8,
+                    ItemsPerPage = itemsOnPage ?? 8,
                     TotalItems = catalog.Count,
-                    TotalPages = (int)Math.Ceiling((decimal)catalog.count / (itemsOnPage ?? 8))
+                    TotalPages = (int)Math.Ceiling((decimal)catalog.Count / (itemsOnPage ?? 8))
                 },
-                CatalogItems = catalog.Data,
+                ItemsOnPage = catalog.Data,
                 Categories = await _service.GetCategoriesAsync(),
                 Locations = await _service.GetLocationsAsync(),
                 CategoryFilterApplied = category ?? 0,
