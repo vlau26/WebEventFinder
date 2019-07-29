@@ -34,7 +34,7 @@ namespace WebMvc.Infrastructure
                     filterQueries = $"/category/{categoryQuery}/location/{locationQuery}";
                 }
 
-                return $"{baseUri}items{filterQueries}?pageSize={take}&pageIndex={page}";
+                return $"{baseUri}events{filterQueries}?pageSize={take}&pageIndex={page}";
             }
         }
     }

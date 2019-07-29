@@ -52,8 +52,8 @@ namespace WebMvc.Services
                 items.Add(
                     new SelectListItem
                     {
-                        Value = categories.Value<string>("id"),
-                        Text = categories.Value<string>("category")
+                        Value = category.Value<string>("id"),
+                        Text = category.Value<string>("category")
                     }
                    );
             }
@@ -83,8 +83,8 @@ namespace WebMvc.Services
                    (
                     new SelectListItem
                     {
-                        Value = locations.Value<string>("id"),
-                        Text = locations.Value<string>("location")
+                        Value = location.Value<string>("id"),
+                        Text = location.Value<string>("location")
                     }
                    );
             }
