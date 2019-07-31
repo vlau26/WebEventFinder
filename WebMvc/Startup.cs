@@ -12,8 +12,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using WebMvc.Infrastructure;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WebMvc.Models;
 using WebMvc.Services;
+using WebMvc.Infrastructure;
 
 namespace WebMvc
 {
@@ -37,6 +40,11 @@ namespace WebMvc
             });
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            services.AddTransient<IIdentityService<ApplicationUser>, IdentityService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IOrderService, OrderService>();
+
             var identityUrl = Configuration.GetValue<string>("IdentityUrl");
             var callBackUrl = Configuration.GetValue<string>("CallBackUrl");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
