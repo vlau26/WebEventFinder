@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Infrastructure.Filters
+namespace ShoesOnContainers.Services.OrderApi.Infrastructure.Filters
 {
     public class AuthorizeCheckOperationFilter:IOperationFilter
     {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using EventBriteAssignment3A.Services.OrderApi.Data;
+using ShoesOnContainers.Services.OrderApi.Data;
 
 namespace OrderApi
 {

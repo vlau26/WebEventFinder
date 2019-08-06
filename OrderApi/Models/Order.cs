@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Models
+namespace ShoesOnContainers.Services.OrderApi.Models
 {
     public class Order
     {

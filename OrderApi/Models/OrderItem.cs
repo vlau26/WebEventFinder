@@ -1,4 +1,4 @@
-﻿using EventBriteAssignment3A.Services.OrderApi.Exceptions;
+﻿using ShoesOnContainers.Services.OrderApi.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Models
+namespace ShoesOnContainers.Services.OrderApi.Models
 {
     public class OrderItem
     {

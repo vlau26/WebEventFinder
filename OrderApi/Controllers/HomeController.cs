@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Controllers
+namespace ShoesOnContainers.Services.OrderApi.Controllers
 {
     public class HomeController : Controller
     {

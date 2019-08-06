@@ -1,4 +1,4 @@
-﻿namespace EventBriteAssignment3A.Services.OrderApi 
+﻿namespace ShoesOnContainers.Services.OrderApi 
 {
     public class OrderSettings
     {
