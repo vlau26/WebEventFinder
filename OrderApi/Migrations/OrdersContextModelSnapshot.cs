@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShoesOnContainers.Services.OrderApi.Data;
+using EventBriteAssignment3A.Services.OrderApi.Data;
 
 namespace OrderApi.Migrations
 {
