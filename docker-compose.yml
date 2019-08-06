@@ -18,7 +18,7 @@ networks:
       ExternalCatalogBaseUrl: http://localhost:5088
     ports:
       - "5088:80"
-    container_name: orderapi
+    container_name: catalogapi
     networks: 
       - backend
       - frontend
