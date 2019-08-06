@@ -22,7 +22,7 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
     {
 
         private readonly OrdersContext _ordersContext;
-      private readonly IOptionsSnapshot<OrderSettings> _settings;
+      private readonly IConfiguration _config;
 
 
         private readonly ILogger<OrdersController> _logger;
