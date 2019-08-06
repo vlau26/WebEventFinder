@@ -50,7 +50,7 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
         public async Task<IActionResult> CreateOrder([FromBody] Order order)
         {
             var envs = Environment.GetEnvironmentVariables();
-            var conString = _settings.Value.ConnectionString;
+            var conString = _config["ConnectionString"];
             _logger.LogInformation($"{conString}");
 
             order.OrderStatus = OrderStatus.Preparing;
