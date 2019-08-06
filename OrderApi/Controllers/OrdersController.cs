@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ShoesOnContainers.Services.OrderApi.Data;
+using EventBriteAssignment3A.Services.OrderApi.Data;
 using Microsoft.EntityFrameworkCore;
-using ShoesOnContainers.Services.OrderApi.Models;
+using EventBriteAssignment3A.Services.OrderApi.Models;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using MassTransit;
 using Common.Messaging;
 
-namespace ShoesOnContainers.Services.OrderApi.Controllers
+namespace EventBriteAssignment3A.Services.OrderApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [Authorize]
@@ -22,15 +22,22 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
     {
 
         private readonly OrdersContext _ordersContext;
-      private readonly IOptionsSnapshot<OrderSettings> _settings;
+     // private readonly IOptionsSnapshot<OrderSettings> _settings;
 
 
+        private readonly Iconfiguration _config;
         private readonly ILogger<OrdersController> _logger;
         private IBus _bus;
 
-        public OrdersController(OrdersContext ordersContext, ILogger<OrdersController> logger, IOptionsSnapshot<OrderSettings> settings, IBus bus)
+        public OrdersController(OrdersContext ordersContext,
+            ILogger<OrdersController> logger, 
+            Iconfiguration config,
+           // IOptionsSnapshot<OrderSettings> settings, 
+            IBus bus)
         {
-            _settings = settings;
+          //  _settings = settings;
+            _config = config;
+        
            // _ordersContext = ordersContext;
             _ordersContext = ordersContext ?? throw new ArgumentNullException(nameof(ordersContext));
           
@@ -50,7 +57,8 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
         public async Task<IActionResult> CreateOrder([FromBody] Order order)
         {
             var envs = Environment.GetEnvironmentVariables();
-            var conString = _settings.Value.ConnectionString;
+            var conString = _config["ConnectionString"];
+            //var conString = _settings.Value.ConnectionString;
             _logger.LogInformation($"{conString}");
 
             order.OrderStatus = OrderStatus.Preparing;

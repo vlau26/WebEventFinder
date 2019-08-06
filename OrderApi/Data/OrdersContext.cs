@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using ShoesOnContainers.Services.OrderApi.Models;
+using EventBriteAssignment3A.Services.OrderApi.Models;
 
-namespace ShoesOnContainers.Services.OrderApi.Data
+namespace EventBriteAssignment3A.Services.OrderApi.Data
 {
     public class OrdersContext:DbContext
     {

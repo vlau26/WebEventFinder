@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ShoesOnContainers.Services.OrderApi.Infrastructure.ActionResults
+namespace EventBriteAssignment3A.Services.OrderApi.Infrastructure.ActionResults
 {
     public class InternalServerErrorObjectResult : ObjectResult
     {
