@@ -30,7 +30,7 @@ namespace ShoesOnContainers.Services.OrderApi.Controllers
 
         public OrdersController(OrdersContext ordersContext, ILogger<OrdersController> logger, IConfiguration config, IBus bus)
         {
-            _settings = settings;
+            _config = config;
            // _ordersContext = ordersContext;
             _ordersContext = ordersContext ?? throw new ArgumentNullException(nameof(ordersContext));
           
