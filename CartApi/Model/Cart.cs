@@ -13,7 +13,7 @@ namespace ShoesOnContainers.Services.CartApi.Model
         public Cart(string cartId)
         {
             BuyerId = cartId;
-            Events = new List<Model.CartItem>();
+            Events = new List<CartItem>();
         }
     }
 }
