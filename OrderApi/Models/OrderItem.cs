@@ -19,7 +19,7 @@ namespace EventBriteAssignment.Services.OrderApi.Models
         public decimal UnitPrice { get; set; }
         
         public int Units { get; set; }
-        public int ProductId { get; private set; }
+        public int EventId { get; private set; }
 
         protected OrderItem() { }
         public Order Order { get; set; }
