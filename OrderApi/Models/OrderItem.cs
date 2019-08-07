@@ -32,7 +32,7 @@ namespace EventBriteAssignment.Services.OrderApi.Models
                 throw new OrderingDomainException("Invalid number of units");
             }
 
-            ProductId = productId;
+            EventId = eventId;
 
             EventName = eventName;
             UnitPrice = unitPrice;
