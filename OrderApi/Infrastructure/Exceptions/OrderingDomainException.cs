@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Exceptions
+namespace EventBriteAssignment.Services.OrderApi.Exceptions
 {
     /// <summary>
     /// Exception type for domain exceptions
