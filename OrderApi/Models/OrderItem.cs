@@ -34,7 +34,7 @@ namespace EventBriteAssignment.Services.OrderApi.Models
 
             ProductId = productId;
 
-            ProductName = productName;
+            EventName = eventName;
             UnitPrice = unitPrice;
             
             Units = units;
