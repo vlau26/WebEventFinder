@@ -14,7 +14,7 @@ namespace EventBriteAssignment.Services.OrderApi.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
          
-         public string ProductName { get; set; }
+         public string EventName { get; set; }
         public string PictureUrl { get; set; }
         public decimal UnitPrice { get; set; }
         
