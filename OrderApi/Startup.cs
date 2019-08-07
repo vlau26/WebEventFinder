@@ -21,9 +21,9 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using RabbitMQ.Client;
-using EventBriteAssignment3A.Services.OrderApi;
-using EventBriteAssignment3A.Services.OrderApi.Data;
-using EventBriteAssignment3A.Services.OrderApi.Infrastructure.Filters;
+using EventBriteAssignment.Services.OrderApi;
+using EventBriteAssignment.Services.OrderApi.Data;
+using EventBriteAssignment.Services.OrderApi.Infrastructure.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OrderApi
