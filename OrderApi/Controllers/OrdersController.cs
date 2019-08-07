@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EventBriteAssignment3A.Services.OrderApi.Data;
+using EventBriteAssignment.Services.OrderApi.Data;
 using Microsoft.EntityFrameworkCore;
-using EventBriteAssignment3A.Services.OrderApi.Models;
+using EventBriteAssignment.Services.OrderApi.Models;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 using MassTransit;
 using Common.Messaging;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Controllers
+namespace EventBriteAssignment.Services.OrderApi.Controllers
 {
     [Route("api/v1/[controller]")]
     [Authorize]

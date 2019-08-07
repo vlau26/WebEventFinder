@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
-using EventBriteAssignment3A.Services.OrderApi.Exceptions;
-using EventBriteAssignment3A.Services.OrderApi.Infrastructure.ActionResults;
+using EventBriteAssignment.Services.OrderApi.Exceptions;
+using EventBriteAssignment.Services.OrderApi.Infrastructure.ActionResults;
 using System.Net;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Infrastructure.Filters
+namespace EventBriteAssignment.Services.OrderApi.Infrastructure.Filters
 {
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {
