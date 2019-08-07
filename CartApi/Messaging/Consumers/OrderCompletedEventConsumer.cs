@@ -1,7 +1,7 @@
 ﻿using Common.Messaging;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using ShoesOnContainers.Services.CartApi.Model;
+using EventBriteAssignment.Services.CartApi.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +23,7 @@ namespace CartApi.Messaging.Consumers
         {
             _logger.LogWarning("We are in consume method now...");
             _logger.LogWarning("BuyerId:" +context.Message.BuyerId);
-            return _repository.DeleteCartAsync(context.Message.BuyerId);
-             
+            return _repository.DeleteCartAsync(context.Message.BuyerId);         
         }
     }
 }
