@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EventBriteAssignment3A.Services.OrderApi.Data
+namespace EventBriteAssignment.Services.OrderApi.Data
 {
     public static class MigrateDatabase
     {
