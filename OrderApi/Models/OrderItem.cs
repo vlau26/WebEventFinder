@@ -1,4 +1,4 @@
-﻿using EventBriteAssignment3A.Services.OrderApi.Exceptions;
+﻿using EventBriteAssignment.Services.OrderApi.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
