@@ -25,7 +25,7 @@ namespace EventBriteAssignment.Services.OrderApi.Models
         public Order Order { get; set; }
         public int OrderId { get; set; }
 
-        public OrderItem(int productId, string productName, decimal unitPrice,   string pictureUrl, int units = 1)
+        public OrderItem(int eventId, string eventName, decimal unitPrice,   string pictureUrl, int units = 1)
         {
             if (units <= 0)
             {
