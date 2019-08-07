@@ -1,13 +1,13 @@
 ﻿
-using ShoesOnContainers.Services.CartApi.Infrastructure.ActionResults;
-using ShoesOnContainers.Services.CartApi.Infrastructure.Exceptions;
+using EventBriteAssignment.Services.CartApi.Infrastructure.ActionResults;
+using EventBriteAssignment.Services.CartApi.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using System.Net;
 
-namespace ShoesOnContainers.Services.CartApi.Infrastructure.Filters
+namespace EventBriteAssignment.Services.CartApi.Infrastructure.Filters
 {
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {
