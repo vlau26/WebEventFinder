@@ -35,7 +35,7 @@ namespace WebMvc.Services
         }
 
 
-        public async Task AddItemToCart(ApplicationUser user, CartItem product)
+        public async Task AddItemToCart(ApplicationUser user, CartItem event)
         {
             var cart = await GetCart(user);
             _logger.LogDebug("User Name: " + user.Id);
@@ -48,11 +48,11 @@ namespace WebMvc.Services
                 };
             }
             var basketItem = cart.Items
-                .Where(p => p.ProductId == product.ProductId)
+                .Where(p => p.EventId == event.EventId)
                 .FirstOrDefault();
             if (basketItem == null)
             {
-                cart.Items.Add(product);
+                cart.Items.Add(event);
             }
             else
             {
@@ -100,10 +100,10 @@ namespace WebMvc.Services
             {
                 order.OrderItems.Add(new OrderItem()
                 {
-                    ProductId = int.Parse(x.ProductId),
+                    EventId = int.Parse(x.EventId),
 
                     PictureUrl = x.PictureUrl,
-                    ProductName = x.ProductName,
+                    EventName = x.EventName,
                     Units = x.Quantity,
                     UnitPrice = x.UnitPrice
                 });
