@@ -8,6 +8,7 @@ namespace WebMvc.Models
     public class CatalogItem
     {
         internal object Id;
+        internal string Name;
 
         public int EventId { get; set; }
         public string EventName { get; set; }
