@@ -4,7 +4,7 @@ networks:
   frontend:
   backend:
 
-services:
+ services:
   catalog: 
     build:
       context: .\EventBriteAssignment
@@ -24,6 +24,7 @@ services:
       - frontend
     depends_on:
       - mssqlserver
+
 
   cart:
     build:
