@@ -8,7 +8,7 @@ namespace WebMvc.Models.CartModels
     public class CartItem
     {
         public string Id { get; set; }
-        public string ProductId { get; set; }
+        public string EventId { get; set; }
         public string ProductName { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal OldUnitPrice { get; set; }
