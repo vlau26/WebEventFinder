@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EventBriteAssignment.Services.OrderApi.Data;
@@ -9,9 +7,9 @@ using EventBriteAssignment.Services.OrderApi.Models;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Options;
 using MassTransit;
 using Common.Messaging;
+using Microsoft.Extensions.Configuration;
 
 namespace EventBriteAssignment.Services.OrderApi.Controllers
 {
@@ -25,13 +23,13 @@ namespace EventBriteAssignment.Services.OrderApi.Controllers
      // private readonly IOptionsSnapshot<OrderSettings> _settings;
 
 
-        private readonly Iconfiguration _config;
+        private readonly IConfiguration _config;
         private readonly ILogger<OrdersController> _logger;
         private IBus _bus;
 
         public OrdersController(OrdersContext ordersContext,
             ILogger<OrdersController> logger, 
-            Iconfiguration config,
+            IConfiguration config,
            // IOptionsSnapshot<OrderSettings> settings, 
             IBus bus)
         {
