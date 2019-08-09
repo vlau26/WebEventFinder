@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using CartApi.Model;
+using EventBriteAssignment.Services.CartApi.Model;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CartApi.Model
+namespace EventBriteAssignment.Services.CartApi.Model
 {
     public class RedisCartRepository : ICartRepository
     {

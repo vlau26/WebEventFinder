@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,18 +8,19 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using Microsoft.AspNetCore.Http;
-using CartApi.Model;
+using EventBriteAssignment.Services.CartApi.Model;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json;
-using CartApi.Infrastructure.Filters;
+using EventBriteAssignment.Services.CartApi.Infrastructure.Filters;
 using Autofac;
-using CartApi.Messaging.Consumers;
+using EventBriteAssignment.Services.CartApi.Messaging.Consumers;
 using MassTransit;
 using Autofac.Extensions.DependencyInjection;
 using MassTransit.Util;
 using CartApi.Infrastructure.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CartApi
 {

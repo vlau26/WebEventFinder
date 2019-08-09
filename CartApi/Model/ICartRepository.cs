@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CartApi.Model
+namespace EventBriteAssignment.Services.CartApi.Model
 {
     public interface ICartRepository
     {
