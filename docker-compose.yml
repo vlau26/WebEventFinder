@@ -10,6 +10,11 @@ services:
       context: .\EventBriteAssignment
       dockerfile: Dockerfile
     image: eventbrite/catalogapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment: 
       DatabaseServer: mssqlserver
       DatabaseName: eventCatalogDb
@@ -31,6 +36,11 @@ services:
       context: .\CartApi
       dockerfile: Dockerfile
     image: eventbrite/cartapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment: 
       ASPNETCORE_ENVIRONMENT: Development
       IdentityUrl: http://192.168.1.159:5092
@@ -44,12 +54,18 @@ services:
     depends_on:
       - mssqlserver
       - tokenservice
+      - rabbitmq
 
   order:
     build:
       context: .\OrderApi
       dockerfile: Dockerfile
     image: eventbrite/orderapi
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       IdentityUrl: http://10.10.10.30:5070
@@ -65,6 +81,7 @@ services:
     depends_on:
       - mssqlserver
       - tokenservice
+      - rabbitmq
 
   tokenservice:
     image: eventbrite/tokenserviceapi
@@ -88,6 +105,11 @@ services:
       context: .\WebMvc
       dockerfile: Dockerfile
     image: eventbrite/webmvc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
     environment: 
       CatalogUrl: http://catalog
       IdentityUrl: http://192.168.1.159:5092
@@ -120,3 +142,24 @@ services:
       - "1451:1433"
     networks:
       - backend
+
+  basket.data:
+    image: redis
+    ports:
+      - "6371:6379"
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: myrabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "5671:5671"
+    volumes:
+      - ~/rabbitmq:/var/lib/rabbitmq/mnesia
+    networks:
+      - backend
+

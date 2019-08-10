@@ -115,7 +115,7 @@ namespace CartApi
                     });
 
                     // https://stackoverflow.com/questions/39573721/disable-round-robin-pattern-and-use-fanout-on-masstransit
-                    cfg.ReceiveEndpoint(host, "EventBrite" + Guid.NewGuid().ToString(), e =>
+                    cfg.ReceiveEndpoint(host, "EventBriteAssignment" + Guid.NewGuid().ToString(), e =>
                     {
                         e.LoadFrom(context);
                     });
