@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using System.Diagnostics;
 using WebMvc.Services;
 using WebMvc.Models;
 using WebMvc.Models.CartModels;
 using Polly.CircuitBreaker;
-using WebMvc.Services;
-using WebMvc.Models;
 
 namespace WebMvc.Controllers
 {
     [Authorize]
     public class CartController : Controller
     {
-        
+
         private readonly ICartService _cartService;
         private readonly ICatalogService _catalogService;
         private readonly IIdentityService<ApplicationUser> _identityService;
@@ -32,7 +27,7 @@ namespace WebMvc.Controllers
 
 
         }
-        public    IActionResult  Index()
+        public IActionResult Index()
         {
             //try
             //{
@@ -78,21 +73,21 @@ namespace WebMvc.Controllers
 
         }
 
-            public async Task<IActionResult> AddToCart(CatalogItem productDetails)
+        public async Task<IActionResult> AddToCart(CatalogItem eventDetails)
         {
             try
             {
-                if (productDetails.Id != null)
+                if (eventDetails.Id != null)
                 {
                     var user = _identityService.Get(HttpContext.User);
                     var product = new CartItem()
                     {
                         Id = Guid.NewGuid().ToString(),
                         Quantity = 1,
-                        ProductName = productDetails.Name,
-                        PictureUrl = productDetails.PictureUrl,
-                        UnitPrice = productDetails.Price,
-                        ProductId = productDetails.Id
+                        EventName = eventDetails.Name,
+                        PictureUrl = eventDetails.PictureUrl,
+                        UnitPrice = eventDetails.Price,
+                        EventId = eventDetails.Id
                     };
                     await _cartService.AddItemToCart(user, product);
                 }
