@@ -43,7 +43,7 @@ services:
         max-file: "10"
     environment: 
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http://192.168.1.159:5092
+      IdentityUrl: http://192.168.3.100:5092
       ConnectionString: basket.data
     ports:
       - "5081:80"
@@ -52,7 +52,7 @@ services:
       - backend
       - frontend
     depends_on:
-      - mssqlserver
+      - basket.data
       - tokenservice
       - rabbitmq
 
@@ -68,7 +68,7 @@ services:
         max-file: "10"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      IdentityUrl: http://10.10.10.30:5070
+      IdentityUrl: http://192.168.3.100:5092
       SQLSERVER_HOST: catalogdb
       SA_PASSWORD: EventsApi(!)
       DATABASE: OrdersDb
@@ -112,7 +112,7 @@ services:
         max-file: "10"
     environment: 
       CatalogUrl: http://catalog
-      IdentityUrl: http://192.168.1.159:5092
+      IdentityUrl: http://192.168.3.100:5092
       CallbackUrl: http://localhost:5090
       CartUrl: http://cart
       OrderUrl: http://order
@@ -124,8 +124,7 @@ services:
     container_name: webeventstore
     networks: 
       - frontend
-    depends_on:
-      - mssqlserver
+    depends_on:      
       - tokenservice
       - catalog
       - cart

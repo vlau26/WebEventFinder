@@ -50,8 +50,8 @@ namespace CartApi
 
             services.AddSingleton<ConnectionMultiplexer>(sp =>
             {
-                var settings = sp.GetRequiredService<IOptions<CartSettings>>().Value;
-                var configuration = ConfigurationOptions.Parse(settings.ConnectionString, true);
+                //var settings = sp.GetRequiredService<IOptions<CartSettings>>().Value;
+                var configuration = ConfigurationOptions.Parse(Configuration["ConnectionString"], true);
                 //resolving via dns before connecting
                 configuration.ResolveDns = true;
                 configuration.AbortOnConnectFail = false;

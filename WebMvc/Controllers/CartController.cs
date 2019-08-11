@@ -77,21 +77,21 @@ namespace WebMvc.Controllers
         {
             try
             {
-                if (eventDetails.Id != null)
+                if (eventDetails.EventId != null)
                 {
                     var user = _identityService.Get(HttpContext.User);
                     var product = new CartItem()
                     {
                         Id = Guid.NewGuid().ToString(),
                         Quantity = 1,
-                        EventName = eventDetails.Name,
+                        EventName = eventDetails.EventName,
                         PictureUrl = eventDetails.PictureUrl,
                         UnitPrice = eventDetails.Price,
-                        EventId = eventDetails.Id
+                        EventId = eventDetails.EventId
                     };
                     await _cartService.AddItemToCart(user, product);
                 }
-                return RedirectToAction("Index", "Catalog");
+                //return RedirectToAction("Index", "Catalog");
             }
             catch (BrokenCircuitException)
             {
