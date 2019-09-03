@@ -10,7 +10,7 @@
     }
     @Html.Partial("_Header", new List<Header>() { new Header() { Controller = "Cart", Text = "Back to cart" } })
    <div class="container">
-    <form method="post" asp-controller="Order" asp-action="Create" id="payment-form">
+    <form method="post" asp-controller="Orders" asp-action="Create" id="payment-form">
         <section class="esh-orders_new-section">
             <div class="row">
                 @foreach (var error in ViewData.ModelState.Values.SelectMany(err => err.Errors))

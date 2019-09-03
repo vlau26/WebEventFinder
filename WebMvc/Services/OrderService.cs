@@ -21,8 +21,9 @@ namespace WebMvc.Services
         private readonly ILogger _logger;
         public OrderService(IConfiguration config, IHttpContextAccessor httpContextAccesor, IHttpClient httpClient, ILoggerFactory logger)
         {
-            _remoteServiceBaseUrl = $"{_config["OrderUrl"]}/api/v1/orders";
+
             _config = config;
+            _remoteServiceBaseUrl = $"{_config["OrderUrl"]}/api/orders";
             _httpContextAccesor = httpContextAccesor;
             _apiClient = httpClient;
             _logger = logger.CreateLogger<OrderService>();

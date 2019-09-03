@@ -52,7 +52,7 @@ namespace WebMvc.Controllers
         {
             if (action == "[ Checkout ]")
             {
-                return RedirectToAction("Create", "Order");
+                return RedirectToAction("Create", "Orders");
             }
 
 

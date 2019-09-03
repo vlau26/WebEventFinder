@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace EventBriteAssignment.Services.OrderApi.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [Authorize]
      
     public class OrdersController : Controller

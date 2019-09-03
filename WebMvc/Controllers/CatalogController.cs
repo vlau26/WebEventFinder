@@ -12,24 +12,25 @@ namespace WebMvc.Controllers
         private readonly ICatalogService _service;
         public CatalogController(ICatalogService service) => _service = service;
                    
-        public async Task<IActionResult> Index(int? category, int? location, int? page, int? itemsOnPage)
+        public async Task<IActionResult> Index(int? categoryFilterApplied, int? locationFilterApplied, int? page)
         {
-            var catalog = await _service.GetCatalogItemsAsync(page ?? 0, itemsOnPage ?? 8, category, location);
+            var itemsOnPage = 8;
+            var catalog = await _service.GetCatalogItemsAsync(page ?? 0, itemsOnPage, categoryFilterApplied, locationFilterApplied);
 
             var viewModel = new CatalogIndexViewModel
             {
                 PaginationInfo = new PaginationInfo
                 {
                     ActualPage = page ?? 0,
-                    ItemsPerPage = itemsOnPage ?? 8,
+                    ItemsPerPage = itemsOnPage,
                     TotalItems = catalog.Count,
-                    TotalPages = (int)Math.Ceiling((decimal)catalog.Count / (itemsOnPage ?? 8))
+                    TotalPages = (int)Math.Ceiling((decimal)catalog.Count / (itemsOnPage))
                 },
-                ItemsOnPage = catalog.Data,
+                CatalogItems = catalog.Data,
                 Categories = await _service.GetCategoriesAsync(),
                 Locations = await _service.GetLocationsAsync(),
-                CategoryFilterApplied = category ?? 0,
-                LocationFilterApplied = location ?? 0
+                CategoryFilterApplied = categoryFilterApplied ?? 0,
+                LocationFilterApplied = locationFilterApplied ?? 0
             };
             // if actual page is first page(0), then disable previous in html, otherwise leave as empty/no style
             viewModel.PaginationInfo.Previous = (viewModel.PaginationInfo.ActualPage == 0) ? "is-disabled" : "";

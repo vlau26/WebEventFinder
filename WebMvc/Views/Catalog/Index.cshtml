@@ -63,12 +63,12 @@
     </div>
 </section>
 <div class="container">
-    @if (Model.ItemsOnPage.Count() > 0)
+    @if (Model.CatalogItems.Count() > 0)
     {
         @Html.Partial("_pagination", Model.PaginationInfo)
 
         <div class="esh-catalog-items row">
-            @foreach (var catalogItem in Model.ItemsOnPage)
+            @foreach (var catalogItem in Model.CatalogItems)
             {
                 <div class="esh-catalog-item col-md-4">
                     @Html.Partial("_product", catalogItem)

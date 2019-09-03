@@ -13,7 +13,7 @@ namespace WebMvc.ViewModels
         public IEnumerable<SelectListItem> Locations { get; set; }
 
 
-        public IEnumerable<CatalogItem> ItemsOnPage { get; set; }
+        public IEnumerable<CatalogItem> CatalogItems { get; set; }
         //                 CategoryFilterApplied = category LocationFilterApplied = location ?? 0
 
         public int? CategoryFilterApplied { get; set; }

@@ -28,7 +28,7 @@ namespace WebMvc.Services
         public CartService(IConfiguration config, IHttpContextAccessor httpContextAccesor, IHttpClient httpClient, ILoggerFactory logger)
         {
             _config = config;
-            _remoteServiceBaseUrl = $"{_config["CartUrl"]}/api/v1/cart";
+            _remoteServiceBaseUrl = $"{_config["CartUrl"]}/api/cart";
             _httpContextAccesor = httpContextAccesor;
             _apiClient = httpClient;
             _logger = logger.CreateLogger<CartService>();
@@ -44,15 +44,15 @@ namespace WebMvc.Services
                 cart = new Cart()
                 {
                     BuyerId = user.Id,
-                    Items = new List<CartItem>()
+                    Events = new List<CartItem>()
                 };
             }
-            var basketItem = cart.Items
+            var basketItem = cart.Events
                 .Where(p => p.EventId == eventItem.EventId)
                 .FirstOrDefault();
             if (basketItem == null)
             {
-                cart.Items.Add(eventItem);
+                cart.Events.Add(eventItem);
             }
             else
             {
@@ -96,7 +96,7 @@ namespace WebMvc.Services
             var order = new Order();
             order.OrderTotal = 0;
 
-            cart.Items.ForEach(x =>
+            cart.Events.ForEach(x =>
             {
                 order.OrderItems.Add(new OrderItem()
                 {
@@ -118,7 +118,7 @@ namespace WebMvc.Services
         {
             var basket = await GetCart(user);
 
-            basket.Items.ForEach(x =>
+            basket.Events.ForEach(x =>
             {
                 // Simplify this logic by using the
                 // new out variable initializer.

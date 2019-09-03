@@ -97,12 +97,12 @@ namespace EventBriteAssignment3A.Controllers
         {
             var root = (IQueryable<CatalogItem>)_catalogContext.CatalogItems;
 
-            if (catalogCategoryId.HasValue)
+            if (catalogCategoryId.HasValue && catalogCategoryId.Value > 0)
             {
                 root = root.Where(c => c.CatalogCategoryId == catalogCategoryId);
             }
 
-            if (catalogLocationId.HasValue)
+            if (catalogLocationId.HasValue && catalogLocationId.Value > 0)
             {
                 root = root.Where(c => c.CatalogLocationId == catalogLocationId);
             }
